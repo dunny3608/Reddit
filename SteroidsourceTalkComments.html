@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SteroidsourceTalk Comments Section</title>
+    <link rel="stylesheet" href="./index.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .comments-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .comment {
+            /* background-color: white; */
+            border-radius: 5px;
+            padding: 10px;
+            /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+            /* margin-bottom: 10px; */
+        }
+
+        .replies {
+            margin-top: 0px;
+            margin-left: 22px;
+            position: relative;
+            border-left: 2px solid gray;
+        }
+
+        /* .replies::before {
+            content: "";
+            position: absolute;
+            left: -10px;
+            top: 8px;
+            height: 15px;
+            width: 15px;
+            border-left: 2px solid gray;
+            border-bottom: 2px solid gray;
+            border-radius: 0 0 0 100%;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="mainBodyContainer">
+
+        <div class="mainAvtardiv">
+            <div class="mainAvtar">
+                <div class="backArrow">
+                    &#x2190;
+                </div>
+                <div class="avtardiv">
+                    <img src="https://www.redditstatic.com/avatars/defaults/v2/avatar_default_2.png" class="avtarimg"
+                        alt="avtarr" />
+                </div>
+                <p class="authername" id="post-auther">author name</p>
+                <p class="years" id="post-date">&#x25CF;
+                </p>
+            </div>
+
+            <div class="threeDots">
+                <svg fill="#000000cc" height="18px" width="18px" id="Layer_1" data-name="Layer 1"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path class="cls-1"
+                        d="M8,6.5A1.5,1.5,0,1,1,6.5,8,1.5,1.5,0,0,1,8,6.5ZM.5,8A1.5,1.5,0,1,0,2,6.5,1.5,1.5,0,0,0,.5,8Zm12,0A1.5,1.5,0,1,0,14,6.5,1.5,1.5,0,0,0,12.5,8Z" />
+                </svg>
+            </div>
+
+        </div>
+        <div>
+            <p class="quesText" id="post-title"> post title
+            </p>
+            <p class="bodyData" id="post-content">
+                body data
+            </p>
+        </div>
+        <div class="sectionReplay">
+            <div class="countCon">
+                <p class="increaseVote">&#x21e7;</p> <span class="mainupvotes">0</span>
+                <p class="deceraseVote">&#x21e9;</p>
+            </div>
+            <div class="replayCount">
+                <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M3 7.2C3 6.07989 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V20L17.6757 18.3378C17.4237 18.2118 17.2977 18.1488 17.1656 18.1044C17.0484 18.065 16.9277 18.0365 16.8052 18.0193C16.6672 18 16.5263 18 16.2446 18H6.2C5.07989 18 4.51984 18 4.09202 17.782C3.71569 17.5903 3.40973 17.2843 3.21799 16.908C3 16.4802 3 15.9201 3 14.8V7.2Z"
+                        stroke="#000000cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <p class="replayCountText" id="post-commets">0</p>
+            </div>
+            <div class="awardMain">
+                <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M18.6284 13.4807C19.4942 12.2024 20 10.6603 20 9C20 4.58172 16.4183 1 12 1C7.58172 1 4 4.58172 4 9C4 10.5545 4.44338 12.0055 5.21057 13.2333L2.05686 18.6957C1.88357 18.9958 1.87805 19.3643 2.04226 19.6695C2.20648 19.9747 2.51701 20.1731 2.86297 20.1939L5.85952 20.3738L7.51356 22.8789C7.70452 23.1681 8.03162 23.3379 8.37805 23.3275C8.72447 23.3171 9.04081 23.1281 9.2141 22.8279L12.0008 18.0013L14.634 22.5622C14.8073 22.8623 15.1236 23.0513 15.47 23.0617C15.8165 23.0721 16.1436 22.9024 16.3345 22.6132L17.9071 20.2314L20.7561 20.0604C21.102 20.0396 21.4126 19.8412 21.5768 19.536C21.741 19.2308 21.7355 18.8623 21.5622 18.5622L18.6284 13.4807ZM12 15C15.3137 15 18 12.3137 18 9C18 5.68629 15.3137 3 12 3C8.68629 3 6 5.68629 6 9C6 12.3137 8.68629 15 12 15ZM13.6355 16.8327L15.557 20.1609L16.5136 18.7122C16.687 18.4495 16.974 18.2838 17.2882 18.2649L19.0211 18.1609L17.2282 15.0554C16.2192 15.9273 14.9901 16.5513 13.6355 16.8327ZM4.59792 18.2944L6.57139 14.8763C7.61642 15.8422 8.91965 16.5328 10.3659 16.833L8.29107 20.4267L7.25305 18.8545C7.07962 18.5919 6.79264 18.4262 6.47845 18.4073L4.59792 18.2944Z"
+                        fill="#0F0F0Fcc" />
+                </svg>
+            </div>
+            <div class="shareMain">
+                <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M14.734 15.8974L19.22 12.1374C19.3971 11.9927 19.4998 11.7761 19.4998 11.5474C19.4998 11.3187 19.3971 11.1022 19.22 10.9574L14.734 7.19743C14.4947 6.9929 14.1598 6.94275 13.8711 7.06826C13.5824 7.19377 13.3906 7.47295 13.377 7.78743V9.27043C7.079 8.17943 5.5 13.8154 5.5 16.9974C6.961 14.5734 10.747 10.1794 13.377 13.8154V15.3024C13.3888 15.6178 13.5799 15.8987 13.8689 16.0254C14.158 16.1521 14.494 16.1024 14.734 15.8974Z"
+                        stroke="#000000cc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg> Share
+            </div>
+
+        </div>
+
+    </div>
+    <div class="comments-section" id="comments-section">
+        <p style="font-size: large; color: blueviolet;" id="loading">Loading....</p>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+        const backBtn = document.querySelector(".backArrow");
+
+        backBtn.addEventListener('click', () => {
+
+            history.back()
+        })
+
+        fetch('Steroidsourcetalk_submissions.json')
+            .then(response => response.json())
+            .then(posts => {
+                console.log("1 start find post data");
+                let postScore = document.querySelector(".mainupvotes");
+                const postScoreup = document.querySelector(".increaseVote");
+                const postScoredown = document.querySelector(".deceraseVote");
+
+                const post = posts.find(p => p.id === postId);
+
+                if (post) {
+                    document.getElementById('post-title').textContent = post.title;
+                    document.getElementById('post-content').textContent = post.selftext || post.url;
+                    document.getElementById('post-auther').textContent = post.author;
+                    postScore.textContent = post.score;
+                    document.getElementById('post-date').textContent = new Date(post?.created || post?.created_utc * 1000).toJSON().slice(0, 10).split('-').reverse().join('/');
+                } else {
+                    document.getElementById('post-title').textContent = 'Post not found';
+                }
+
+                postScoreup.addEventListener('click', () => {
+
+                    post.score += 1;
+                    postScore.textContent = post.score;
+                });
+
+                // Decrease the score on downvote
+                postScoredown.addEventListener('click', () => {
+
+                    post.score -= 1;
+                    postScore.textContent = post.score;
+                });
+
+                console.log("1 end find post data");
+            })
+            .catch(error => console.error('Error loading posts:', error));
+
+        function organizeComments(comments) {
+            const commentMap = {};
+            const rootComments = [];
+
+            // Map each comment by id for easy lookup
+            comments.forEach(comment => {
+                comment.replies = [];
+                commentMap[comment.id] = comment;
+            });
+
+            // Iterate through comments and assign them to their parents
+            comments.forEach(comment => {
+                if (comment.parent_id.startsWith('t1_')) {
+                    const parentId = comment.parent_id.substring(3);
+                    if (commentMap[parentId]) {
+                        commentMap[parentId].replies.push(comment);
+                    } else {
+                        rootComments.push(comment);
+                    }
+                } else {
+                    rootComments.push(comment);
+                }
+            });
+
+            return rootComments;
+        }
+
+        function renderComment(comment) {
+            const commentDiv = document.createElement('div');
+            commentDiv.className = 'comment';
+            commentDiv.innerHTML = `
+                <div>
+                    
+                <div class="avtarContainer">
+                <div class="avtardiv">
+
+                    <img src="https://www.redditstatic.com/avatars/defaults/v2/avatar_default_2.png" class="avtarimg"
+                        alt="avtarr" />
+                        </div>
+
+                <p class="authername">${comment?.author}</p>
+                <p class="years">&#x25CF; ${new Date(comment?.created_utc * 1000).toJSON().slice(0, 10).split('-').reverse().join('/')}</p>
+                </div>
+                <div class="bodtText">
+                <div class="lineDiv">
+                    <div class="lineClass"></div>
+                </div>
+                <p class="bodyData">${comment?.body}</p>
+            </div>
+            <div class="replayDiv">
+                <div class="avtardiv">
+                    <button class="expandBut">-</button>
+                </div>
+                <div class="sectionReplay">
+                    <div class="insideData">
+                        <p class="upwordarrow">&#x21e7;</p> <span class="upvotes">${comment?.score}</span>
+                        <p class="downarrow">&#x21e9;</p>
+                    </div>
+                    <div class="replayData">
+                        <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M3 7.2C3 6.07989 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V20L17.6757 18.3378C17.4237 18.2118 17.2977 18.1488 17.1656 18.1044C17.0484 18.065 16.9277 18.0365 16.8052 18.0193C16.6672 18 16.5263 18 16.2446 18H6.2C5.07989 18 4.51984 18 4.09202 17.782C3.71569 17.5903 3.40973 17.2843 3.21799 16.908C3 16.4802 3 15.9201 3 14.8V7.2Z"
+                                stroke="#000000cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg> Reply
+                    </div>
+                    <div class="awardData">
+                        <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M18.6284 13.4807C19.4942 12.2024 20 10.6603 20 9C20 4.58172 16.4183 1 12 1C7.58172 1 4 4.58172 4 9C4 10.5545 4.44338 12.0055 5.21057 13.2333L2.05686 18.6957C1.88357 18.9958 1.87805 19.3643 2.04226 19.6695C2.20648 19.9747 2.51701 20.1731 2.86297 20.1939L5.85952 20.3738L7.51356 22.8789C7.70452 23.1681 8.03162 23.3379 8.37805 23.3275C8.72447 23.3171 9.04081 23.1281 9.2141 22.8279L12.0008 18.0013L14.634 22.5622C14.8073 22.8623 15.1236 23.0513 15.47 23.0617C15.8165 23.0721 16.1436 22.9024 16.3345 22.6132L17.9071 20.2314L20.7561 20.0604C21.102 20.0396 21.4126 19.8412 21.5768 19.536C21.741 19.2308 21.7355 18.8623 21.5622 18.5622L18.6284 13.4807ZM12 15C15.3137 15 18 12.3137 18 9C18 5.68629 15.3137 3 12 3C8.68629 3 6 5.68629 6 9C6 12.3137 8.68629 15 12 15ZM13.6355 16.8327L15.557 20.1609L16.5136 18.7122C16.687 18.4495 16.974 18.2838 17.2882 18.2649L19.0211 18.1609L17.2282 15.0554C16.2192 15.9273 14.9901 16.5513 13.6355 16.8327ZM4.59792 18.2944L6.57139 14.8763C7.61642 15.8422 8.91965 16.5328 10.3659 16.833L8.29107 20.4267L7.25305 18.8545C7.07962 18.5919 6.79264 18.4262 6.47845 18.4073L4.59792 18.2944Z"
+                                fill="#0F0F0Fcc" />
+                        </svg> Award
+                    </div>
+                    <div class="shareData">
+                        <svg width="26px" height="26px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M14.734 15.8974L19.22 12.1374C19.3971 11.9927 19.4998 11.7761 19.4998 11.5474C19.4998 11.3187 19.3971 11.1022 19.22 10.9574L14.734 7.19743C14.4947 6.9929 14.1598 6.94275 13.8711 7.06826C13.5824 7.19377 13.3906 7.47295 13.377 7.78743V9.27043C7.079 8.17943 5.5 13.8154 5.5 16.9974C6.961 14.5734 10.747 10.1794 13.377 13.8154V15.3024C13.3888 15.6178 13.5799 15.8987 13.8689 16.0254C14.158 16.1521 14.494 16.1024 14.734 15.8974Z"
+                                stroke="#000000cc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg> Share
+                    </div>
+                    <div class="threeDots">
+                        <svg fill="#000000cc" height="18px" width="18px" id="Layer_1" data-name="Layer 1"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                            <path class="cls-1"
+                                d="M8,6.5A1.5,1.5,0,1,1,6.5,8,1.5,1.5,0,0,1,8,6.5ZM.5,8A1.5,1.5,0,1,0,2,6.5,1.5,1.5,0,0,0,.5,8Zm12,0A1.5,1.5,0,1,0,14,6.5,1.5,1.5,0,0,0,12.5,8Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="inputContainer">
+                <div class="avtardiv">
+                    <img src="" class="fullLine" />
+                </div>
+                <div class="inputMainDiv">
+                    <textarea class="inputData" rows="3"> </textarea>
+                    <div class="inputButtonDiv">
+                        <button class="cancelBtn">Cancel</button>
+                        <button class="commitBtn">Commit</button>
+                    </div>
+                </div>
+
+                </div>
+
+            </div>
+                
+            `;
+
+            const upvoteBtn = commentDiv.querySelector('.upwordarrow');
+            const downvoteBtn = commentDiv.querySelector('.downarrow');
+            const upvotesSpan = commentDiv.querySelector('.upvotes');
+            const expnadbtn = commentDiv.querySelector('.expandBut');
+            const replaybtn = commentDiv.querySelector('.replayData');
+            const cancelBtn = commentDiv.querySelector('.cancelBtn');
+            const commentBtn = commentDiv.querySelector('.commitBtn');
+            const replyForm = commentDiv.querySelector('.inputContainer');
+            const leftBorder = commentDiv.querySelector('.lineClass');
+
+
+            // Increase the score on upvote
+            upvoteBtn.addEventListener('click', () => {
+                comment.score += 1;
+                upvotesSpan.textContent = comment?.score;
+            });
+
+            // Decrease the score on downvote
+            downvoteBtn.addEventListener('click', () => {
+                comment.score -= 1;
+                upvotesSpan.textContent = comment?.score;
+            });
+
+            replaybtn.addEventListener('click', () => {
+                replyForm.style.display = 'flex';
+            });
+
+            cancelBtn.addEventListener('click', () => {
+                replyForm.style.display = 'none';
+            });
+
+            commentBtn.addEventListener('click', () => {
+                // Handle posting the reply logic here
+                const replyText = commentDiv.querySelector('.inputData').value;
+                console.log('Reply:', replyText);
+                replyForm.style.display = 'none';
+            });
+
+
+
+            if (comment.replies && comment.replies.length > 0) {
+                // const collapseBtn = document.createElement('button');
+                // collapseBtn.className = 'collapse-btn';
+                // collapseBtn.textContent = 'Collapse';
+                // commentDiv.appendChild(collapseBtn);
+
+                const repliesDiv = document.createElement('div');
+                repliesDiv.className = 'replies';
+                comment.replies.forEach(reply => {
+                    repliesDiv.appendChild(renderComment(reply));
+                });
+                commentDiv.appendChild(repliesDiv);
+
+                // Collapse/Expand functionality
+                let isCollapsed = false;
+                expnadbtn.addEventListener('click', () => {
+                    isCollapsed = !isCollapsed;
+                    repliesDiv.style.display = isCollapsed ? 'none' : 'block';
+                    expnadbtn.textContent = isCollapsed ? '+' : '-';
+                });
+            } else {
+                expnadbtn.style.display = "none"
+                leftBorder.style.display = "none"
+
+                // const avatarContainers = document.querySelectorAll('.avtarContainer');
+                // avatarContainers.forEach(container => {
+                //     container.classList.add('hide');
+                // });
+            }
+
+            return commentDiv;
+        }
+
+        function renderNoData() {
+            const commentDiv = document.createElement('div');
+            commentDiv.className = 'comment';
+            commentDiv.innerHTML = `<p style="font-size:20px;">No Commets Found</p>`
+
+            return commentDiv
+        }
+
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+            "id": `t3_${postId}`
+        });
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+
+        fetch("https://reddit-com1.vercel.app/db2", requestOptions)
+            .then((response) => response.text())
+            .then((result) => {
+                const loading = document.getElementById('loading');
+                const Data = JSON.parse(result);
+
+                const commentsSection = document.getElementById('comments-section');
+                document.getElementById('post-commets').textContent = Data.length;
+
+                if (Data.length > 0) {
+                    loading.style = "display:none;"
+                    const organizedComments = organizeComments(Data);
+                    organizedComments.forEach(comment => {
+                        commentsSection.appendChild(renderComment(comment));
+                    });
+                } else {
+                    loading.style = "display:none;"
+                    commentsSection.appendChild(renderNoData())
+                }
+            })
+            .catch((error) => console.error(error));
+    </script>
+</body>
+
+</html>

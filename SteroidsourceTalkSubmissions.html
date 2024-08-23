@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SteroidsourceTalk submission</title>
+</head>
+
+<body>
+    <h1
+        style="max-width: 1000px; margin: 0 auto; padding: 10px 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center;">
+        SteroidsourceTalk submission</h1>
+    <div style="max-width: 1000px;margin: 0 auto; background-color: antiquewhite; padding: 20px;
+    border-radius: 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <p style="font-size: large; color: blueviolet;" id="loading">Loading....</p>
+        <ol id="post-list" style="display: flex;flex-direction: column;gap: 10px;">
+        </ol>
+    </div>
+
+    <script>
+        // Load the JSON file containing the posts
+        fetch('Steroidsourcetalk_submissions.json')
+            // fetch('submission.json')
+            .then(response => response.json())
+            .then(async posts => {
+                const postList = document.getElementById('post-list');
+                const loading = document.getElementById('loading');
+                console.log("start print");
+                await posts.forEach((post, index) => {
+
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = `SteroidsourceTalkComments.html?id=${post.id}`;
+                    a.style = "font-size:18px;margin-left:10px;text-decoration: none;"
+                    a.textContent = post.title;
+                    li.appendChild(a);
+                    loading.style = "display:none;"
+                    postList.appendChild(li);
+                });
+                console.log("end print");
+            })
+            .catch(error => console.error('Error loading posts:', error));
+    </script>
+</body>
+
+</html>

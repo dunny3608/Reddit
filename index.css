@@ -1,0 +1,354 @@
+.container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mainsection {
+    width: 70%;
+}
+
+.avtarimg {
+    width: 35px;
+    height: 35px;
+    border-radius: 999px;
+}
+
+.avtarContainer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    position: relative;
+}
+
+.avtarContainer::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 8px;
+    height: 15px;
+    width: 15px;
+    border-left: 2px solid gray;
+    border-bottom: 2px solid gray;
+    border-radius: 0 0 0 100%;
+}
+
+.hide::before {
+    display: none;
+}
+
+.avtardiv {
+    width: 45px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    min-width: 45px;
+}
+
+.lineDiv {
+    width: 45px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    min-width: 45px;
+}
+
+.lineClass {
+    display: flex;
+    height: 100%;
+    width: 2px;
+    background-color: gray;
+}
+
+.authername {
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+}
+
+.years {
+    font-size: 12px;
+    color: gray;
+}
+
+.bodtText {
+    display: flex;
+    gap: 8px;
+}
+
+.fullLine {
+    width: 40px;
+}
+
+.replayDiv {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.expandBut {
+    background-color: white;
+    border-radius: 999px;
+    border-width: 1px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.bodyData {
+    font-size: 15px;
+    margin: 0;
+    padding-bottom: 8px;
+    color: gray;
+    white-space: pre-line;
+}
+
+.sectionReplay {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    overflow: hidden;
+}
+
+.insideData {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}
+
+.upwordarrow {
+    font-size: 18px;
+    margin: 0;
+    cursor: pointer;
+    width: 30px;
+    height: 18px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000cc;
+}
+
+.upwordarrow:hover {
+    color: orangered;
+    background-color: lightgray;
+}
+
+.downarrow {
+    font-size: 18px;
+    margin: 0;
+    cursor: pointer;
+    width: 30px;
+    height: 18px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000cc;
+}
+
+.downarrow:hover {
+    color: darkviolet;
+    background-color: lightgray;
+}
+
+.replayData,
+.awardData,
+.shareData {
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    font-size: 14px;
+    width: 85px;
+    height: 18px;
+    justify-content: center;
+    border-radius: 999px;
+    cursor: pointer;
+    color: #000000cc;
+}
+
+.replayData:hover,
+.awardData:hover,
+.shareData:hover,
+.threeDots:hover {
+    background-color: lightgray;
+}
+
+.threeDots {
+    width: 35px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.inputContainer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    display: none;
+}
+
+.inputMainDiv {
+    display: flex;
+    border: 1px solid gray;
+    border-radius: 18px;
+    flex-direction: column;
+    width: 100%;
+}
+
+.inputData {
+    padding: 10px 3px;
+    border-radius: 18px;
+    border: 0;
+    background-color: transparent;
+}
+
+.inputButtonDiv {
+    display: flex;
+    justify-content: end;
+    gap: 8px;
+    margin: 3px;
+}
+
+.cancelBtn {
+    background-color: gray;
+    width: 65px;
+    height: 30px;
+    border: 0;
+    border-radius: 999px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.commitBtn {
+    background-color: darkolivegreen;
+    width: 65px;
+    height: 30px;
+    border: 0;
+    border-radius: 999px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* main body */
+
+.mainAvtardiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mainAvtar {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.quesText {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.countCon {
+    display: flex;
+    align-items: center;
+    background-color: lightgrey;
+    border-radius: 999px;
+}
+
+.increaseVote,
+.deceraseVote {
+    font-size: 22px;
+    margin: 0;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000cc;
+}
+
+.increaseVote:hover {
+    color: orangered;
+    background-color: lightgray;
+}
+
+.deceraseVote:hover {
+    color: darkviolet;
+    background-color: lightgray;
+}
+
+.replayCount {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    background-color: lightgray;
+    border-radius: 999px;
+    height: 30px;
+    width: 55px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.awardMain {
+    display: flex;
+    height: 30px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.shareMain {
+    display: flex;
+    height: 30px;
+    width: 90px;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.mainBodyContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 18px;
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 10px;
+
+}
+
+.backArrow {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 480px) {
+
+    .replayData,
+    .awardData {
+        display: none;
+    }
+}
