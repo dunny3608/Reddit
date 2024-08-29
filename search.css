@@ -1,0 +1,142 @@
+.mainSearchContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: lightslategray;
+    padding: 14px;
+    border-radius: 14px;
+}
+
+.input1container,
+.input2container,
+.input3container,
+.input4container {
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+}
+
+.headerText {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: white;
+    margin-top: 5px;
+}
+
+.textInput,
+.dropInput,
+.dateInput {
+    padding: 4px 8px;
+    line-height: 2;
+    border: 0;
+    font-size: 100%;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.dropInput {
+    height: 100%;
+    width: 100%;
+}
+
+.dateInput {
+    font-size: 16px;
+}
+
+.input5container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.searchBtn {
+    display: flex;
+    width: 100%;
+    padding: 4px 6px;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 2;
+    cursor: pointer;
+    font-size: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: aquamarine;
+    border: 0;
+    color: brown;
+    border-radius: 6px;
+}
+
+.errorText {
+    font-size: large;
+    margin: 0;
+    color: purple;
+    display: none;
+    margin-top: 10px;
+}
+
+.subMainClass {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.subDivCotainer {
+    background-color: antiquewhite;
+    padding: 20px 40px;
+    margin-top: 15px;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.subDivText {
+    text-decoration: none;
+    font-size: larger;
+    color: blueviolet;
+    font-weight: 600;
+}
+
+@media screen and (max-width:600px) {
+    .subMainClass {
+        display: block;
+    }
+
+    .input1container,
+    .input2container,
+    .input3container,
+    .input4container {
+        display: block;
+
+    }
+
+    .textInput,
+    .dateInput {
+        padding: 3px 7px;
+        line-height: 1.7;
+        font-size: small;
+    }
+
+    .dropInput {
+        font-size: small;
+        padding: 5px 6px;
+    }
+
+    .searchBtn {
+        line-height: 1.3;
+    }
+}
+
+
+input[type="date"] {
+    min-width: 95.6%;
+    -webkit-appearance: none;
+}

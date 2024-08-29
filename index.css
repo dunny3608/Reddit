@@ -343,6 +343,12 @@
     cursor: pointer;
 }
 
+.highlight {
+    background-color: yellow;
+    /* or any color you prefer */
+    font-weight: bold;
+    color: black;
+}
 
 
 @media screen and (max-width: 480px) {

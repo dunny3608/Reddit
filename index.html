@@ -5,29 +5,273 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Submissions</title>
+    <link rel="stylesheet" href="./search.css">
 </head>
 
 <body>
-    <h1
-        style="max-width: 1000px; margin: 0 auto; padding: 10px 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; ">
-        All Submissions</h1>
-    <div
-        style="max-width: 1000px;margin: 0 auto; background-color: aliceblue; padding: 20px 40px; margin-top: 15px;
-    border-radius: 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; ">
-        <a href="/PEDsSubmission.html" style="text-decoration: none; font-size: larger;">PEDs Submisttion</a>
+    <!--search filter  -->
+    <div class="mainSearchContainer">
+        <div class="input1container">
+            <div class="inputContainer">
+                <p class="headerText">
+                    AUTHOR
+                </p>
+                <input id="authorName" class="textInput" />
+            </div>
+            <div class="inputContainer">
+                <p class="headerText">
+                    SUBREDDIT
+                </p>
+
+                <select class="dropInput" id="subreddit">
+                    <option value="1">PEDs Submisttion</option>
+                    <option value="2">SteroidsourceTalk Submisttion</option>
+                    <option value="3">Steroids Submisttion</option>
+                </select>
+            </div>
+        </div>
+        <div class="input2container">
+            <div class="inputContainer">
+                <p class="headerText">
+                    Search for
+                </p>
+                <select class="dropInput" id="seatchFor">
+                    <option value="post">Posts</option>
+                    <option value="comments">Comments</option>
+                </select>
+            </div>
+            <div class="inputContainer">
+                <p class="headerText">
+                    Num. Returned
+                </p>
+                <input id="numLimit" class="textInput" value="100" min="25" step="25" type="number" />
+            </div>
+            <div class="inputContainer">
+                <p class="headerText">
+                    Score Filter
+                </p>
+                <div style="display: flex; align-items: center; gap: 5px; ">
+
+                    <select class="dropInput" id="scoreFilter" style="width: 50%; ">
+                        <option value=""></option>
+                        <option value="lessThan"> &#x2264; </option>
+                        <option value="greaterThan"> &#x2265; </option>
+                    </select>
+                    <input id="scoreLimit" class="textInput" placeholder="number" type="number" style="width: 50%;" />
+                </div>
+            </div>
+        </div>
+        <div class=" input3container">
+            <div class="inputContainer">
+                <p class="headerText">
+                    After
+                </p>
+                <input id="dateAfter" class="dateInput" type="date" />
+            </div>
+            <div class="inputContainer">
+                <p class="headerText">
+                    Before
+                </p>
+                <input id="dateBefore" class="dateInput" type="date" />
+            </div>
+
+        </div>
+        <div class="input4container">
+            <div class="inputContainer">
+                <p class="headerText">
+                    Search Term
+                </p>
+                <input id="searchTerm" class="textInput" />
+            </div>
+        </div>
+        <div class="input5container">
+            <button class="searchBtn" id="searchBtn" onclick="SearchData()">Search</button>
+            <p class="errorText" id="searchError">error</p>
+        </div>
     </div>
-    <div
-        style="max-width: 1000px;margin: 0 auto; background-color: aliceblue; padding: 20px 40px; margin-top: 15px;
-    border-radius: 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; ">
-        <a href="/SteroidsourceTalkSubmissions.html" style="text-decoration: none; font-size: larger;">SteroidsourceTalk
-            Submisttion</a>
+    <!-- All Submissions -->
+    <div id="allSubmissions">
+        <h1
+            style="max-width: 1000px; margin: 0 auto; padding: 10px 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; ">
+            All Submissions</h1>
+        <div class="subMainClass">
+            <div class="subDivCotainer">
+                <a href="/PEDsSubmission.html" class="subDivText">PEDs Submisttion</a>
+            </div>
+            <div class="subDivCotainer">
+                <a href="/SteroidsourceTalkSubmissions.html" class="subDivText">SteroidsourceTalk Submisttion</a>
+            </div>
+            <div class="subDivCotainer">
+                <a href="/SteroidsSubmission.html" class="subDivText">Steroids Submisttion</a>
+            </div>
+        </div>
     </div>
-    <div
-        style="max-width: 1000px;margin: 0 auto; background-color: aliceblue; padding: 20px 40px; margin-top: 15px;
-    border-radius: 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; ">
-        <a href="/SteroidsSubmission.html" style="text-decoration: none; font-size: larger;">Steroids
-            Submisttion</a>
+    <!-- searchData -->
+    <div id="searchData" style="display: none;">
+        <h1
+            style="max-width: 1000px; margin: 0 auto; padding: 10px 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center;">
+            Search Data</h1>
+        <div style="max-width: 1000px;margin: 0 auto; background-color: antiquewhite; padding: 20px;
+            border-radius: 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+            <p style="font-size: large; color: blueviolet; display: none;" id="nomatch">No Match Found</p>
+            <ol id="post-list" style="display: flex;flex-direction: column;gap: 10px;">
+            </ol>
+        </div>
     </div>
+
+    <script>
+
+
+        const decodeString = (str) => {
+            return str.replace(/\\u[\dA-F]{4}/gi, (unicode) => {
+                return String.fromCharCode(parseInt(unicode.replace(/\\u/g, ""), 16));
+            });
+        }
+
+        function SearchData() {
+            const Author = document.getElementById('authorName').value;
+            const SubReddit = document.getElementById('subreddit').value;
+            const SearchFor = document.getElementById('seatchFor').value;
+            const NumLimit = document.getElementById('numLimit').value;
+            const scoreFilter = document.getElementById('scoreFilter').value;
+            const ScoreLimit = document.getElementById('scoreLimit').value;
+            const DateAfter = document.getElementById('dateAfter').value;
+            const DateBefore = document.getElementById('dateBefore').value;
+            const SearchTerm = document.getElementById('searchTerm').value;
+            const ErrorText = document.getElementById('searchError');
+            const SearchBtn = document.getElementById('searchBtn');
+            const AllSubmission = document.getElementById('allSubmissions');
+            const SearchDataDiv = document.getElementById('searchData');
+            const NoMatch = document.getElementById('nomatch');
+
+            SearchBtn.textContent = "Searching ..."
+            SearchBtn.disabled = true;
+            SearchBtn.style = "background-color: lightyellow;";
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            const afterDate = new Date(DateAfter).getTime();
+            const beforeDate = new Date(DateBefore).getTime();
+
+            const raw = JSON.stringify({
+                "author": Author,
+                "subreddit": SubReddit,
+                "type": SearchFor,
+                "limit": NumLimit,
+                "scorefilter": Number(ScoreLimit),
+                "scorefilterType": scoreFilter,
+                "startDate": afterDate ? (afterDate / 1000).toString() : null,
+                "endDate": beforeDate ? (beforeDate / 1000).toString() : null,
+                "term": SearchTerm
+            });
+
+            const requestOptions = {
+                method: "POST",
+                headers: myHeaders,
+                body: raw,
+                redirect: "follow"
+            };
+
+            console.log(raw, "--- request");
+
+            fetch("https://reddit-com1.vercel.app/search", requestOptions)
+                .then((response) => response.text())
+                .then(async result => {
+                    SearchBtn.textContent = "Search"
+                    ErrorText.style = "display:none";
+                    SearchBtn.disabled = false;
+                    SearchBtn.style = "background-color: aquamarine;";
+                    AllSubmission.style = "display:none";
+                    SearchDataDiv.style = "display:block";
+
+                    let postList = document.getElementById('post-list');
+
+                    const parseData = JSON.parse(result);
+
+                    postList.innerHTML = "";
+                    if (parseData.length === 0) {
+                        NoMatch.style = "display:block;"
+                        return
+                    }
+                    NoMatch.style = "display:none;"
+                    console.log(parseData);
+                    console.log("start print");
+                    if (SearchFor === "comments") {
+                        await parseData.forEach(async (post, index) => {
+
+                            const li = document.createElement('li');
+                            const a = document.createElement('a');
+
+                            if (SubReddit == "1") {
+                                a.href = `PEDsComment.html?id=${post.postId}&string=${SearchTerm}&matchId=${post.comments[0].id}`;
+                            } else if (SubReddit == "2") {
+                                a.href = `SteroidsourceTalkComments.html?id=${post.postId}&string=${SearchTerm}&matchId=${post.comments[0].id}`;
+                            } else if (SubReddit == "3") {
+                                a.href = `SteroidsComment.html?id=${post.postId}&string=${SearchTerm}&matchId=${post.comments[0].id}`;
+                            }
+
+                            a.style = "font-size:18px;margin-left:10px;text-decoration: none;"
+                            a.textContent = post.post.title;
+
+                            if (post.comments.length > 0) {
+                                await post.comments.forEach((comm, index) => {
+                                    const ul = document.createElement('ul');
+                                    const al = document.createElement('li');
+
+                                    al.textContent = comm.body;
+
+                                    ul.appendChild(al)
+
+                                    a.appendChild(ul)
+                                })
+                            }
+
+                            li.appendChild(a);
+                            postList.appendChild(li);
+                        });
+                    } else {
+                        await parseData.forEach((post, index) => {
+
+                            const li = document.createElement('li');
+                            const a = document.createElement('a');
+                            if (SubReddit == "1") {
+                                a.href = `PEDsComment.html?id=${post.id}&string=${SearchTerm}`;
+                            } else if (SubReddit == "2") {
+                                a.href = `SteroidsourceTalkComments.html?id=${post.id}&string=${SearchTerm}`;
+                            } else if (SubReddit == "3") {
+                                a.href = `SteroidsComment.html?id=${post.id}&string=${SearchTerm}`;
+                            }
+
+                            a.style = "font-size:18px;margin-left:10px;text-decoration: none;"
+                            a.textContent = post.title;
+                            li.appendChild(a);
+                            postList.appendChild(li);
+                        });
+                    }
+
+
+                    console.log("end print");
+                })
+                .catch((error) => {
+                    NoMatch.style = "display:none;"
+                    ErrorText.style = "display:block";
+                    SearchBtn.textContent = "Search";
+                    SearchBtn.disabled = false;
+                    SearchBtn.style = "background-color: aquamarine;";
+                    AllSubmission.style = "display:block";
+                    SearchDataDiv.style = "display:none";
+                    if (error.toString().includes("Failed to fetch")) {
+                        ErrorText.innerText = "Add Some Criteria to Filter Data";
+                    } else {
+                        ErrorText.innerText = error;
+                    }
+                });
+
+        }
+
+
+
+    </script>
 </body>
 
 </html>

@@ -122,12 +122,23 @@
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const postId = urlParams.get('id');
+        const searchString = urlParams.get('string');
+        const matchId = urlParams.get('matchId');
         const backBtn = document.querySelector(".backArrow");
 
         backBtn.addEventListener('click', () => {
 
             history.back()
         })
+
+        function highlightSearchText(searchText, fullText) {
+            if (!searchText) return fullText; // Return the original text if no search text is provided
+
+            const regex = new RegExp(`(${searchText})`, 'gi'); // Create a regex to find the search text (case-insensitive)
+
+            return fullText.replace(regex, '<span class="highlight">$1</span>'); // Highlight the matching text
+        }
+
 
         fetch('Steroidsourcetalk_submissions.json')
             .then(response => response.json())
@@ -141,10 +152,10 @@
 
                 if (post) {
                     document.getElementById('post-title').textContent = post.title;
-                    document.getElementById('post-content').textContent = post.selftext || post.url;
+                    document.getElementById('post-content').innerHTML = highlightSearchText(searchString, post.selftext || post.url);
                     document.getElementById('post-auther').textContent = post.author;
                     postScore.textContent = post.score;
-                    document.getElementById('post-date').textContent = new Date(post?.created || post?.created_utc * 1000).toJSON().slice(0, 10).split('-').reverse().join('/');
+                    document.getElementById('post-date').textContent = new Date(Number(post?.created_utc) * 1000).toJSON().slice(0, 10).split('-').reverse().join('/');
                 } else {
                     document.getElementById('post-title').textContent = 'Post not found';
                 }
@@ -197,7 +208,7 @@
             const commentDiv = document.createElement('div');
             commentDiv.className = 'comment';
             commentDiv.innerHTML = `
-                <div>
+                <div id=${comment.id}>
                     
                 <div class="avtarContainer">
                 <div class="avtardiv">
@@ -207,13 +218,13 @@
                         </div>
 
                 <p class="authername">${comment?.author}</p>
-                <p class="years">&#x25CF; ${new Date(comment?.created_utc * 1000).toJSON().slice(0, 10).split('-').reverse().join('/')}</p>
+                <p class="years">&#x25CF; ${new Date(Number(comment?.created_utc) * 1000).toJSON().slice(0, 10).split('-').reverse().join('/')}</p>
                 </div>
                 <div class="bodtText">
                 <div class="lineDiv">
                     <div class="lineClass"></div>
                 </div>
-                <p class="bodyData">${comment?.body}</p>
+                <p class="bodyData">${highlightSearchText(searchString, comment?.body)}</p>
             </div>
             <div class="replayDiv">
                 <div class="avtardiv">
@@ -385,6 +396,9 @@
                     organizedComments.forEach(comment => {
                         commentsSection.appendChild(renderComment(comment));
                     });
+                    if (matchId) {
+                        document.getElementById(matchId || "").scrollIntoView({ behavior: 'smooth' });
+                    }
                 } else {
                     loading.style = "display:none;"
                     commentsSection.appendChild(renderNoData())
